@@ -9,7 +9,7 @@ import Aside from './components/Aside.vue'
     <div class="flex">
     <Aside></Aside>
     <RouterView />
-   </div>
+   </div> 
 
  
 </template>
