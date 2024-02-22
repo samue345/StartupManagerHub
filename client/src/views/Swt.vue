@@ -1,4 +1,5 @@
 <script setup>
+  import Aside from '../components/Aside.vue'
     import { ref, onMounted } from 'vue';
   
 
@@ -9,6 +10,8 @@
 
 </script>
 <template>
+  <div class="flex">
+      <Aside></Aside>
     <main class="conteudo_principal">
         <h1>Matriz SWT</h1>
         <article class="">
@@ -49,6 +52,7 @@
                 </div>
         </article>
     </main>
+  </div>
 </template>
 <style scoped>
 #matriz{
@@ -91,7 +95,7 @@
 }
 
 
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 780px){
 
     #matriz{
 
@@ -113,11 +117,13 @@
     }
 
 }
-@media only screen and (max-width: 650px){
+@media only screen and (max-width: 675px){
+
    #matriz{
-    grid-template-columns: repeat(1, 80vw); 
-    margin: 0;
+     grid-template-columns: repeat(1, 80vw); 
+     margin: 0;
    }
-  
+   #aside_vertical{display: none;}   
+
 }
 </style>

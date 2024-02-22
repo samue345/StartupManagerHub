@@ -99,12 +99,10 @@ button:focus-visible {
 
 
 
-@media only screen and (max-width: 650px){
+@media only screen and (max-width: 670px){
 
-  #aside_vertical{display: none;}
   .conteudo_principal{
     margin: 40px 0 30px 35px;
-  
   }
 
 
