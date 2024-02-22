@@ -9,7 +9,7 @@
             <ul class="">
                 <li class="item_lista_nav"><RouterLink to="/swt">Minha SWT</RouterLink></li>
                 <li class="item_lista_nav"><RouterLink to="/canva">Meu modelo canvas</RouterLink></li>
-                <li class="item_lista_nav">meus 4P´S</li>
+                <li class="item_lista_nav"><RouterLink to="/perguntas"> meus 4P´S</RouterLink></li>
             </ul>
         </nav>
     </aside>

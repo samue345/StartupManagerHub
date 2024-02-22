@@ -9,12 +9,12 @@
         <Aside></Aside>
         <main class="conteudo_principal">
             <article>
-                <h1>Plano de negócios canvas</h1>
+                <h1 style="  font-synthesis: none; margin-bottom: 8px;">Plano de negócios canvas</h1>
 
                 <div id="canvas">
                     <section class="caixa">
                         <header>
-                          <h4>Parcerias chave</h4>
+                          <h4 class="subtitles">Parcerias chave</h4>
                        </header>
                        <quill-editor theme="snow" style="border: none;"></quill-editor>
 
@@ -22,14 +22,14 @@
                     <section class="caixa">
                         <section class="caixas_intercaladas">
                           <header>
-                            <h4>Atividades chave</h4>
+                            <h4 class="subtitles">Atividades chave</h4>
                           </header>
                           <quill-editor theme="snow" style="border: none;"></quill-editor>
 
                         </section>
                         <section>
                           <header>
-                             <h4>Recursos chave</h4>
+                             <h4 class="subtitles">Recursos chave</h4>
                           </header>
                           <quill-editor theme="snow" style="border: none;"></quill-editor>
 
@@ -38,7 +38,7 @@
                     </section>
                     <section class="caixa">
                        <header>
-                         <h4>Proposta de valor</h4>
+                         <h4 class="subtitles">Proposta de valor</h4>
                        </header>
                        <quill-editor theme="snow" style="border: none;"></quill-editor>
 
@@ -46,14 +46,14 @@
                     <section class="caixa">
                         <section class="caixas_intercaladas">
                            <header>
-                            <h4>Relacionamento com os clientes</h4>
+                            <h4 class="subtitles">Relacionamento com os clientes</h4>
                           </header>
                           <quill-editor theme="snow" style="border: none;"></quill-editor>
 
                         </section>
                         <section >
                           <header>
-                            <h4> Canais</h4>
+                            <h4 class="subtitles"> Canais</h4>
                           </header>
                           <quill-editor theme="snow" style="border: none;"></quill-editor>
 
@@ -61,7 +61,7 @@
                     </section>  
                     <section class="caixa">
                         <header>
-                          <h4>Segmento de clientes</h4>
+                          <h4 class="subtitles">Segmento de clientes</h4>
                         </header>
                         <quill-editor theme="snow" style="border: none;"></quill-editor>
 
@@ -70,14 +70,14 @@
                     <section class="caixa_inferiores">
                         <section class="caixa_inferior_interna">
                           <header>
-                            <h4>Custos</h4>
+                            <h4 class="subtitles">Custos</h4>
                           </header>
                           <quill-editor theme="snow" style="border: none;"></quill-editor>
 
                         </section>
                         <section  class="caixa_inferior_interna">
                           <header>
-                            <h4>Fontes de receita</h4>
+                            <h4 class="subtitles">Fontes de receita</h4>
                           </header>
                           <quill-editor theme="snow" style="border: none;"></quill-editor>
 
@@ -106,11 +106,10 @@
     }
     header{
         background-color: #2ED8EB;
-        color: black;
         box-shadow:0 2px 4px rgba(0,0,0,.3);
-        font-weight: bold;
 
     }
+
     .caixa_inferiores{
         display: flex;
         width: 75vw;

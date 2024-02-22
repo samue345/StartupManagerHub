@@ -18,7 +18,7 @@
                 <div id="matriz">
                     <section class="matriz_swt caixas_superiores">
                         <div class="flex">
-                        <h4>Forças</h4><span> <img class="icons_swt" src="../assets/strengh.svg" alt="icon strengh"></span> 
+                        <h4 class="subtitles">Forças</h4><span> <img class="icons_swt" src="../assets/strengh.svg" alt="icon strengh"></span> 
                        </div>
                       <div class="editor">
                         <quill-editor theme="snow" class="text_editor" style="height: 225px;"></quill-editor>
@@ -26,7 +26,7 @@
                     </section>
                     <section class="matriz_swt caixas_superiores" style="border-right: none;">
                         <div class="flex" id="caixa_fraquezas">
-                          <h4>Fraquezas</h4><img class="icons_swt" src="../assets/weakness.svg" alt="icon weakness">
+                          <h4 class="subtitles">Fraquezas</h4><img class="icons_swt" src="../assets/weakness.svg" alt="icon weakness">
                         </div>
                         <div class="editor">
                          <quill-editor theme="snow" class="text_editor" style="height: 225px;"></quill-editor>
@@ -34,7 +34,7 @@
                     </section>
                     <section class="matriz_swt caixas_inferiores">
                         <div class="flex" style="  margin-bottom: 7px;">
-                          <h4>Oportunidades</h4><img class="icons_swt" src="../assets/bullseye_arrow.svg" alt="icon bullseye_arrow">
+                          <h4 class="subtitles">Oportunidades</h4><img class="icons_swt" src="../assets/bullseye_arrow.svg" alt="icon bullseye_arrow">
                         </div>
                         <div class="editor">
                          <quill-editor theme="snow" class="text_editor" style="height: 225px;"></quill-editor>
@@ -43,7 +43,7 @@
                     </section>
                     <section class="matriz_swt caixas_inferiores" style="border-right: none;">
                         <div class="flex" id="caixa_ameacas">
-                          <h4>Ameaças</h4><img class="icons_swt" id="icon_excla" src="../assets/excla.svg" alt="icon excla">
+                          <h4 class="subtitles">Ameaças</h4><img class="icons_swt" id="icon_excla" src="../assets/excla.svg" alt="icon excla">
                         </div>
                         <div class="editor">
                           <quill-editor theme="snow" style="height: 225px;"></quill-editor>
