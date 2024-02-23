@@ -6,8 +6,8 @@
         <nav class="navegation_header">
             <ul class="flex" id="nav_lista">
             <li><RouterLink to="/swt">SWT</RouterLink></li>
-            <li>Canvas</li>
-            <li>4P´S</li>
+            <li><RouterLink to="/canva">Canvas</RouterLink></li>
+            <li><RouterLink to="/perguntas">4P´S</RouterLink></li>
             </ul>
             <div class="profile-circle">P</div>
 

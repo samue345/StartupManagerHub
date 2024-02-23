@@ -30,11 +30,8 @@ const loginWithGoogle = () => {
       <section class="auth-container">
         <form class="login" @submit.prevent="login">
           <h2>Login</h2>
-          <label for="loginEmail">Email:</label>
-          <input class="inputs_info" type="email" id="loginEmail" v-model="loginEmail" required>
-
-          <label for="loginPassword">Senha:</label>
-          <input class="inputs_info" type="password" id="loginPassword" v-model="loginPassword" required>
+          <input class="inputs_info" type="email" id="loginEmail" v-model="loginEmail" required placeholder="Email">
+          <input class="inputs_info" type="password" id="loginPassword" v-model="loginPassword" required placeholder="senha">
 
           <footer>
             <button type="submit">Entrar</button>
@@ -44,17 +41,10 @@ const loginWithGoogle = () => {
 
         <form class="signup" @submit.prevent="signup">
           <h2>Cadastro</h2>
-          <label for="companyName">Nome da Empresa:</label>
-          <input class="inputs_info" type="text" id="companyName" v-model="companyName" required>
-
-          <label for="signupEmail">Email:</label>
-          <input class="inputs_info" type="email" id="signupEmail" v-model="signupEmail" required>
-
-          <label for="signupPassword">Senha:</label>
-          <input class="inputs_info" type="password" id="signupPassword" v-model="signupPassword" required>
-
-          <label for="confirmPassword">Confirme a Senha:</label>
-          <input class="inputs_info" type="password" id="confirmPassword" v-model="confirmPassword" required>
+          <input class="inputs_info" type="text" id="companyName" v-model="companyName" required placeholder="Nome da Empresa">
+          <input class="inputs_info" type="email" id="signupEmail" v-model="signupEmail" required placeholder="Email">
+          <input class="inputs_info" type="password" id="signupPassword" v-model="signupPassword" required placeholder="Senha">
+          <input class="inputs_info" type="password" id="confirmPassword" v-model="confirmPassword" required placeholder="Confirme a Senha">
 
           <button type="submit">Cadastrar</button>
         </form>
@@ -71,6 +61,7 @@ const loginWithGoogle = () => {
 }
 
 form {
+  margin-top: 20px;
   width: 45%;
   display: flex;
   flex-direction: column;
@@ -86,12 +77,23 @@ label {
   margin: 0 auto;
 }
 
+.login h2{
+  margin: 22px 0 20px 0;
+}
+.signup h2{
+    margin-bottom: 20px;
+}
 .inputs_info  {
     margin-top:1px;
     margin-bottom:25px;
     width: 28vw;
     height:40px;
     padding:3px
+}
+label{
+  margin: 10px 0 10px 0;
+  font-weight: bold;
+
 }
 
 button {
