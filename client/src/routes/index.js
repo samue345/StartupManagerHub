@@ -5,6 +5,7 @@ import Swt from "../views/Swt.vue"
 import Canva from "../views/Canva.vue"
 import Perguntas from "../views/Perguntas.vue"
 import Home from "../views/Home.vue"
+import Auth from "../views/Auth.vue"
 
 
 const routes = [
@@ -13,6 +14,8 @@ const routes = [
   {path: '/swt', component: Swt},
   { path: '/canva', component: Canva},
   { path: '/perguntas', component: Perguntas},
+  { path: '/auth', component: Auth},
+
 
 
 ]
