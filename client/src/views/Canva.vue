@@ -105,7 +105,8 @@
         border: 1px solid gray;
     }
     header{
-        background-color: #2ED8EB;
+        background-color: #066fc3;
+        color: white;
         box-shadow:0 2px 4px rgba(0,0,0,.3);
 
     }
@@ -153,7 +154,6 @@
     @media only screen and (max-width: 768px){
         #canvas{
           grid-template-columns: repeat(2, 40vw); 
-
           margin: 10px 0 0 0;
         }
 
