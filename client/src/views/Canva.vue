@@ -106,6 +106,8 @@
     }
     header{
         background-color: #066fc3;
+        margin-bottom: 2px;
+        padding: 3px;
         color: white;
         box-shadow:0 2px 4px rgba(0,0,0,.3);
 

@@ -7,7 +7,12 @@
     <div class="caixa_h1">
     <h1>Nós ajudamos você a gerenciar melhor a sua startup!</h1>
     </div>
+ 
   </header>
+  <div class="div_mobile">
+    <h1 >Nós ajudamos você a gerenciar melhor a sua startup!</h1>
+  </div>
+ 
 
    <main id="conteudo_home">
         <section class="caixa_images">
@@ -25,7 +30,7 @@
             <h3>Crie uma matriz SWT</h3>
           </div>
           <div class="caixa_plan">
-              <img src="../assets/swot.webp" alt="">
+              <img src="../assets/swot.webp" alt="" id="swot_img">
             </div>
         </section>
 
@@ -63,8 +68,10 @@
     top: 25%;
     left: 5%;
   }
-
-  h1{
+  .div_mobile{
+    display: none;
+  }
+  .caixa_h1 h1{
     color: white;
     font-size: 3em;
   }
@@ -83,9 +90,7 @@
     background: #d3bbd3;
     margin-top: 100px;
     width: 90vw;
-    height: 65vh;
-
-
+    height: 474.5px;
   }
 
   .caixa_texto_canvas{
@@ -104,7 +109,7 @@
   }
   .caixa_plan img{
     width: 100%;
-    height: 475px;
+    height: 111%;
 
   }
 
@@ -128,5 +133,37 @@
 
   .lista_footer a:hover{
     color: #066fc3;
+  }
+
+  @media only screen and (max-width: 765px) {
+      .caixa_images{
+        display: flex;
+        flex-direction: column;
+    }
+    .caixa_plan img{
+       height: 360px;
+       margin-top: 26px;
+
+    }
+    #swot_img{
+      height: 398px;
+
+    }
+    .caixa_texto_canvas, .caixa_plan{
+       width: 100%;
+    }
+    .caixa_h1{
+      display: none;
+    }
+    .div_mobile{
+      display: flex;
+      justify-content: center;
+    }
+    .div_mobile h1{
+      padding-top: 10px;
+      font-size: 1.5em;
+
+    }
+  
   }
 </style>
