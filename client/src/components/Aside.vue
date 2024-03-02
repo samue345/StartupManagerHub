@@ -1,7 +1,3 @@
-<script setup>
-
-</script>
-
 <template>
     
     <aside id="aside_vertical">

@@ -1,8 +1,6 @@
 <script setup>
   import Aside from '../components/Aside.vue'
 
-
-
 </script>
 <template>
     <div class="flex">

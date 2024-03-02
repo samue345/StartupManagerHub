@@ -1,6 +1,6 @@
 <script setup>
   import { ref } from 'vue';
-import Aside from '../components/Aside.vue'
+  import Aside from '../components/Aside.vue'
   const preco = ref(null);
 
   const formatMoney = () => 

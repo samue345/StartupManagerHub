@@ -1,26 +1,55 @@
 <script setup>
-import { useCounterStore } from '/src/store/index.js'
-import { ref, onMounted } from 'vue';
+    import { useCounterStore } from '/src/store/index.js'
+    import { ref, onMounted } from 'vue';
+    import router from  '../routes';
+    import axios from '../axios';
 
-const conter = useCounterStore();
-const dropdownStates = ref(false);
+
+    const conter = useCounterStore();
+    const dropdownStates = ref(false);
 
 
-const toggle = () => dropdownStates.value = !dropdownStates.value;
-  
-const isDropdownOpen = () => dropdownStates.value || false;
-  
-const closeAllDropdowns = () =>  dropdownStates.value = false;
-
-onMounted(() => {
-  window.addEventListener('click', () => dropdownStates.value = false)
-  console.log(dropdownStates.value);
-
-});
-
-const myFunction = () =>{
+    const toggle = () => dropdownStates.value = !dropdownStates.value;
     
-}
+    const isDropdownOpen = () => dropdownStates.value || false;
+    
+    const closeAllDropdowns = () =>  dropdownStates.value = false;
+
+    const logout = () => {
+
+       if (conter.verifyLog) 
+       {
+            const user = {
+               startupID: conter.user_logado._id,
+               refreshToken: localStorage.getItem('refreshToken')
+            }
+                        
+            axios.post('/a/startup/logout', user).then((res) =>{
+
+                localStorage.removeItem('accessToken')
+                localStorage.removeItem('refreshToken')
+                conter.user_logado._id = '';
+                conter.user_logado.nome = '';
+                conter.user_logado.email = '';
+                router.push('/')
+
+            
+            }).catch((error) =>{
+                console.error('Erro ao enviar dados:', error);
+
+            })
+         
+
+       } 
+
+    };
+
+    onMounted(() => {
+      window.addEventListener('click', () => dropdownStates.value = false)
+
+    });
+
+
 
 </script>
 <template>
@@ -38,7 +67,7 @@ const myFunction = () =>{
                 <router-link to="/auth"><button class="dropbtn">Entrar</button></router-link>
             </div>
             <div class="dropdown-content" v-if="isDropdownOpen()" id="myDropdown">
-              <button>Sair</button>
+              <button @click="logout">Sair</button>
             </div>
           
 

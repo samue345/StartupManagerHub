@@ -7,7 +7,7 @@ require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const corsOrigin = process.env.CORS_ORIGIN || 'http://127.0.0.1:5173';
+const corsOrigin = process.env.CORS_ORIGIN || 'http://localhost:5173';
 const corsOptions = { origin: corsOrigin, credentials: true, optionsSuccessStatus: 200 };
 
 app.listen(PORT, () => console.log(`Server is running on PORT ${PORT}`));

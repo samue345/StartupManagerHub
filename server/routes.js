@@ -1,13 +1,17 @@
 const express = require('express');
+const {verifyToken}  = require('./middleware/VerifyToken');
 const startupsController = require('./Controllers/StartupsController')
-
 const router = express.Router();
 const guestRouter = express.Router();
 const authRouter = express.Router();
+authRouter.use(verifyToken);
 
+guestRouter.post('/startup/delete', startupsController.delete);
 
-guestRouter.post('/user/form', startupsController.register);
-guestRouter.post('/user/auten', startupsController.login);
+authRouter.post('/startup/token', startupsController.token);
+authRouter.post('/startup/logout', startupsController.logout);
+guestRouter.post('/startup/login', startupsController.login);
+guestRouter.post('/startup/register', startupsController.register);
 
 
 router.use('/a', authRouter);

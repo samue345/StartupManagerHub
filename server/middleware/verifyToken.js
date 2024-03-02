@@ -1,9 +1,10 @@
 const jwt = require('jsonwebtoken');
-const Token = require('../db/models/Token');
+const Token = require('../models/Token');
 
 
 function verifyToken(req, res, next)
 {
+
   const accessToken = req.headers.accesstoken;
   const reqType = req.body.reqType;
   if (!accessToken)
@@ -15,6 +16,7 @@ function verifyToken(req, res, next)
       message: "You are not currently authtenticated. Please, log in to continue." 
     })
   }
+  
   jwt.verify(accessToken, process.env.JWT_SECRET_KEY, (accessError, accessDecoded) =>
   {
 
@@ -46,16 +48,16 @@ function verifyToken(req, res, next)
           })
         }
     
-        if (await Token.findOne({ token: refreshToken, userID: refreshDecoded._id }))
+        if (await Token.findOne({ token: refreshToken, startupID: refreshDecoded._id }))
         {
     
           const newAccessToken = jwt.sign({ _id: refreshDecoded._id }, process.env.JWT_SECRET_KEY, { expiresIn: '15m' })
           req.newAccessToken = newAccessToken;
 
           if (reqType === 'login')
-            req.body.userID = refreshDecoded._id;
+            req.body.startupID = refreshDecoded._id;
           
-          await Token.updateOne({ token: refreshToken, userID: refreshDecoded._id }, { $set: { lastUsed: Date.now() } })            
+          await Token.updateOne({ token: refreshToken, startupID: refreshDecoded._id }, { $set: { lastUsed: Date.now() } })            
           next();
         }
         else
@@ -70,6 +72,7 @@ function verifyToken(req, res, next)
 
       })
     }
+  
     else if (accessError)
     {
       return res.status(401).send(
@@ -79,16 +82,18 @@ function verifyToken(req, res, next)
         message: "Failed to authenticate access token. Please, log in to continue." 
       })
     }
+  
     else
     {
       if (reqType === 'login')
-        req.body.userID = accessDecoded._id;
+        req.body.startupID = accessDecoded._id;
 
       next();
     }
 
 
   })
+  
 
 }
 

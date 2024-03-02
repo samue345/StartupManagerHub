@@ -11,9 +11,9 @@ import Auth from "../views/Auth.vue"
 const routes = [
   
   { path: '/', component: Home},
-  {path: '/swt', component: Swt},
-  { path: '/canva', component: Canva},
-  { path: '/perguntas', component: Perguntas},
+  {path: '/swt', component: Swt, meta: { isAuth: true }},
+  { path: '/canva', component: Canva, meta: { isAuth: true }},
+  { path: '/perguntas', component: Perguntas, meta: { isAuth: true }},
   { path: '/auth', component: Auth},
 
 
@@ -30,7 +30,7 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.isAuth)) 
   {
     if (!localStorage.getItem('accessToken')) 
-      next('/login');
+      next('/auth');
 
     else 
       next();

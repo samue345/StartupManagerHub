@@ -1,12 +1,10 @@
 <script setup>
   import Aside from '../components/Aside.vue'
-    import { ref, onMounted } from 'vue';
+  import { ref, onMounted } from 'vue';
   
 
-    onMounted(() => {
-        console.log('hdhdhd')
-    });
-
+  onMounted(() => {
+   });
 
 </script>
 <template>

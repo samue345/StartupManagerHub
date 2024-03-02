@@ -13,13 +13,14 @@ const signupPassword = ref('');
 const confirmPassword = ref('');
 
 const login = () => {
-  console.log('Login:', loginEmail.value, loginPassword.value);
-  conter.logado(loginEmail.value, loginPassword.value);
+  conter.login(loginEmail.value, loginPassword.value);
 
 };
 
 const signup = () => {
   console.log('Cadastro:', companyName.value, signupEmail.value, signupPassword.value, confirmPassword.value);
+  conter.register(companyName.value, signupEmail.value, signupPassword.value);
+
 };
 
 const loginWithGoogle = () => {
