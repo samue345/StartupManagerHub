@@ -1,5 +1,8 @@
 <script setup>
 import { ref } from 'vue';
+import { useCounterStore } from '/src/store/index.js'
+
+const conter = useCounterStore();
 
 const loginEmail = ref('');
 const loginPassword = ref('');
@@ -10,17 +13,16 @@ const signupPassword = ref('');
 const confirmPassword = ref('');
 
 const login = () => {
-  // Lógica para login aqui
   console.log('Login:', loginEmail.value, loginPassword.value);
+  conter.logado(loginEmail.value, loginPassword.value);
+
 };
 
 const signup = () => {
-  // Lógica para cadastro aqui
   console.log('Cadastro:', companyName.value, signupEmail.value, signupPassword.value, confirmPassword.value);
 };
 
 const loginWithGoogle = () => {
-  // Lógica para login com o Google aqui
   console.log('Fazendo login com o Google');
 };
 </script>
@@ -105,8 +107,8 @@ button {
   margin-right: 10px;
   font-weight: bold;
 
-  min-width: 100px;
-  max-width: 430px;
+  min-width: 5vw;
+  max-width: 28vw;
   
 }
 
