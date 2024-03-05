@@ -1,8 +1,9 @@
-const Startup = require('../models/Startup');
-const Token = require('../models/Token');
-
 var bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const Startup = require('../models/Startup');
+const Token = require('../models/Token');
+const StartupRepo = require('../Repositories/login-repositories')
+const StartupService = require('../services/StartupService')
 
 const StartupController = []
 
@@ -81,57 +82,15 @@ StartupController.register = async (req, res) => {
 }
 
 
-StartupController.login = async (req, res) => {
+StartupController.login = () => {
 
 
-    try {   
-
-
-
-    
-       const startup = await Startup.findOne({email: req.body.email}).lean().select('nome email senha')
-       if(!startup)
-       {
-           return res.status(500).json({
-               status: 500,
-               message: "erro",
-           })
-       }
-
-       
-       bcrypt.compare(req.body.password, startup.senha, async function(err, result) {
-
-    
-           if(result === false)
-            return res.status(400).json({status: 400})
-
-           else
-           {
-             const accessToken = jwt.sign({ _id: startup._id }, process.env.JWT_SECRET_KEY, { expiresIn: '15m' })
-             const refreshToken = jwt.sign({ _id: startup._id }, process.env.JWT_REFRESH, { expiresIn: '30d' })
-             await Token.create({ token: refreshToken, startupID: startup._id })
-             .catch(err => console.log(err))
-    
-             res.status(200).json({
-               startup,
-               accessToken: accessToken,
-               refreshToken: refreshToken
-               });
-           }
-    
-    
-    
-        }); 
-
-             
-    } 
-    catch (error) {
-       res.status(500).json({
-           status: 500,
-           message: error
-       })
-    }
-    
+ 
+       const startupRepo = new StartupRepo();
+       const startupService = new StartupService(startupRepo)
+       return startupService;
+     
+            
 }
 
 StartupController.logout = async (req, res) => 

@@ -1,8 +1,14 @@
 <script setup>
   import Aside from '../components/Aside.vue'
   import { ref, onMounted } from 'vue';
+  const swt_strengh = ref('Seu valor predefinido aqui');
+  const swt_weakness = ref(null);
+  const swt_bullseye = ref(null);
+  const swt_threats = ref(null);
   
-
+  const handleEditorChange = () => {
+     console.log(swt_strengh.value)
+  };
   onMounted(() => {
    });
 
@@ -19,7 +25,8 @@
                         <h4 class="subtitles">Forças</h4><span> <img class="icons_swt" src="../assets/strengh.svg" alt="icon strengh"></span> 
                        </div>
                       <div class="editor">
-                        <quill-editor theme="snow" class="text_editor" style="height: 225px;"></quill-editor>
+                        <quill-editor theme="snow" class="text_editor" style="height: 225px;" v-model:content="swt_strengh" contentType="html" @input="handleEditorChange"></quill-editor>
+
                       </div>
                     </section>
                     <section class="matriz_swt caixas_superiores" style="border-right: none;">
