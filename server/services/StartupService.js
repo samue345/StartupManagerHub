@@ -12,12 +12,7 @@ class StartupService{
         retorno.startup = await this.startupRepository.verificaStartupExiste(email);
         
         if(!retorno.startup)
-        {
-            return res.status(500).json({
-                status: 500,
-                message: "erro",
-            })
-        }
+          return retorno.startup !== null;
  
         const result = await bcrypt.compare(password, retorno.startup.senha);
         
@@ -31,7 +26,7 @@ class StartupService{
         retorno.accessToken= accessToken
         retorno.refreshToken = refreshToken
         return retorno;
-             
+                         
  
     }
 }

@@ -2,7 +2,7 @@ var bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const Startup = require('../models/Startup');
 const Token = require('../models/Token');
-const StartupRepo = require('../Repositories/login-repositories')
+const StartupRepo = require('../repositories/startup-repositories')
 const StartupService = require('../services/StartupService')
 
 const StartupController = []

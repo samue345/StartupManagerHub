@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "jest",
+    "test": "mocha",
     "start": "node server",
     "dev": "node --watch --no-warnings server"
   },
@@ -20,7 +20,8 @@
     "sinon": "^17.0.1"
   },
   "devDependencies": {
-    "jest": "^29.7.0",
+    "chai": "^5.1.0",
+    "mocha": "^10.3.0",
     "supertest": "^6.3.4"
   }
 }
