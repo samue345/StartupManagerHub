@@ -8,7 +8,6 @@ authRouter.use(verifyToken);
 
 guestRouter.post('/startup/delete', startupsFactory.delete);
 
-
 authRouter.post('/startup/token', async (req, res) => {
 
     const startupService = startupsFactory.generateInstanceToken();
@@ -90,6 +89,24 @@ guestRouter.post('/startup/register', async (req, res) => {
 
 });
 
+
+authRouter.post('/swt/create', async (req, res) => {
+ 
+  /*
+  const data = {
+    startupID: req.body.startupID,
+    refreshToken: req.body.refreshToken,
+  };
+
+
+  const startupService = startupsFactory.generateInstancelogout();
+  await startupService.logout(data);
+  */
+  res.status(200).json({ message: "successful" });
+
+
+
+});
 router.use('/a', authRouter);
 router.use('/g', guestRouter);
 

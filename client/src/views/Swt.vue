@@ -1,13 +1,15 @@
 <script setup>
   import Aside from '../components/Aside.vue'
   import { ref, onMounted } from 'vue';
-  const swt_strengh = ref('Seu valor predefinido aqui');
-  const swt_weakness = ref(null);
-  const swt_bullseye = ref(null);
-  const swt_threats = ref(null);
+  import axios from '../axios';
+
+  const swt = {strengh: '', weakness: '', bullseye: '', threats: ''}
+
   
-  const handleEditorChange = () => {
-     console.log(swt_strengh.value)
+  const createSwtEditor = () => {
+     console.log(swt);
+     axios.post('/a/swt/create', swt).catch(err =>{console.error(err)});
+    
   };
   onMounted(() => {
    });
@@ -25,7 +27,7 @@
                         <h4 class="subtitles">Forças</h4><span> <img class="icons_swt" src="../assets/strengh.svg" alt="icon strengh"></span> 
                        </div>
                       <div class="editor">
-                        <quill-editor theme="snow" class="text_editor" style="height: 225px;" v-model:content="swt_strengh" contentType="html" @input="handleEditorChange"></quill-editor>
+                        <quill-editor theme="snow" class="text_editor" style="height: 225px;" v-model:content="swt.strengh" contentType="html"></quill-editor>
 
                       </div>
                     </section>
@@ -34,7 +36,7 @@
                           <h4 class="subtitles">Fraquezas</h4><img class="icons_swt" src="../assets/weakness.svg" alt="icon weakness">
                         </div>
                         <div class="editor">
-                         <quill-editor theme="snow" class="text_editor" style="height: 225px;"></quill-editor>
+                         <quill-editor theme="snow" class="text_editor" style="height: 225px;" v-model:content="swt.weakness" contentType="html"></quill-editor>
                         </div>
                     </section>
                     <section class="matriz_swt caixas_inferiores">
@@ -42,7 +44,7 @@
                           <h4 class="subtitles">Oportunidades</h4><img class="icons_swt" src="../assets/bullseye_arrow.svg" alt="icon bullseye_arrow">
                         </div>
                         <div class="editor">
-                         <quill-editor theme="snow" class="text_editor" style="height: 225px;"></quill-editor>
+                         <quill-editor theme="snow" class="text_editor" style="height: 225px;" v-model:content="swt.bullseye" contentType="html"></quill-editor>
                         </div>
 
                     </section>
@@ -51,12 +53,14 @@
                           <h4 class="subtitles">Ameaças</h4><img class="icons_swt" id="icon_excla" src="../assets/excla.svg" alt="icon excla">
                         </div>
                         <div class="editor">
-                          <quill-editor theme="snow" style="height: 225px;"></quill-editor>
+                          <quill-editor theme="snow" style="height: 225px;" v-model:content="swt.threats" contentType="html"></quill-editor>
                        </div>
                     </section>
                 </div>
         </article>
+        <button class="button_save_data" @click="createSwtEditor">salvar</button>
     </main>
+
   </div>
 </template>
 <style scoped>
@@ -71,6 +75,15 @@
    border: 1px solid gray;
 }
 
+.button_save_data{
+  color: white;
+  width: 100%;
+  background-color: #535bf2;
+}
+.button_save_data:hover{
+  color: black;
+  background-color: #fff
+}
 #caixa_fraquezas, #caixa_ameacas{
   padding: 2px 0 1px 10px;
   margin-bottom: 4px;
@@ -129,6 +142,10 @@
      margin: 0;
    }
    #aside_vertical{display: none;}   
+   
+   .button_save_data{
+      margin-top: 10px;
+   }
 
 }
 </style>
