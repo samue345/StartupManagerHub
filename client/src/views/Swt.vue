@@ -1,22 +1,41 @@
 <script setup>
-  import Aside from '../components/Aside.vue'
   import { useCounterStore } from '/src/store/index.js'
-  import { ref, onMounted } from 'vue';
+  import { onMounted, watchEffect, ref, reactive} from 'vue';
   import axios from '../axios';
 
-  const conter = useCounterStore();
-  const swt = { strength: '', weakness: '', bullseye: '', threats: '' }
-  
+  const counter = useCounterStore();
+  const count = ref(0);
+  const swt = reactive({strength: '', weakness: '', bullseye: '', threats: ''});
+
   const createSwtEditor = () => {
-     console.log(conter.user_logado._id);
-     swt.startupID = conter.user_logado._id;
-     console.log(swt);
+     swt.startupID = counter.user_logado._id;
      axios.post('/a/swt/create', swt).catch(err => { console.error(err) });
   };
-  
+
+  const fetchSwt = (userId) => {
+    axios.get(`/a/swt/find/${userId}`)
+      .then((res) => {
+        Object.assign(swt, res.data.swt)
+
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  };
+
   onMounted(() => {
-    console.log("ID do usuário logado:", conter.user_logado._id);
+    if (counter.user_logado._id) {
+      fetchSwt(counter.user_logado._id);
+    }
   });
+
+  watchEffect(() => {
+    if (counter.user_logado._id) {
+      fetchSwt(counter.user_logado._id);
+      count.value = count.value + 1;
+    }
+  });
+
 </script>
 
 <template>
@@ -31,7 +50,7 @@
                         <h4 class="subtitles">Forças</h4><span> <img class="icons_swt" src="../assets/strengh.svg" alt="icon strengh"></span> 
                        </div>
                       <div class="editor">
-                        <quill-editor theme="snow" class="text_editor" style="height: 225px;" v-model:content="swt.strengh" contentType="html"></quill-editor>
+                        <quill-editor theme="snow" class="text_editor" style="height: 225px;" v-model:content="swt.strength" contentType="html"></quill-editor>
 
                       </div>
                     </section>

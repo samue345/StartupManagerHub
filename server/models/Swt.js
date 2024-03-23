@@ -8,7 +8,7 @@ const swtsSchema = new mongoose.Schema(
           type: String,
           required: true
       },
-      strengh: 
+      strength: 
       {
         type: String,
         required: true,

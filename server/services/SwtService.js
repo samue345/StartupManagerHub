@@ -3,11 +3,10 @@ class StartupService{
     constructor(swtRepository){
         this.swtRepository = swtRepository
     }
-    async finSwt(id){
+    async findSwt(id){
      
         try{
-            console.log(id)
-            //const swt = await this.swtRepository.findSwt(id);
+            const swt = await this.swtRepository.findSwt(id);
             return swt;    
         }
         catch(err){
@@ -20,11 +19,8 @@ class StartupService{
         try{
 
             const swt = await this.swtRepository.findSwt(data.startupID);
-            if(swt)
-              await this.swtRepository.updateSwt(data);
-            else
-              await this.swtRepository.createSwt(data);
-    
+            swt ? await this.swtRepository.updateSwt(data) : await this.swtRepository.createSwt(data);
+              
         }
         catch(err){
             console.error(err)

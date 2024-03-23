@@ -14,8 +14,7 @@ class SwtRepository {
         try {
 
             const { startupID, strength, weakness, bullseye, threats } = data;
-            await Swt.updateOne({ _id: startupID }, { strength, weakness, bullseye, threats });
-            return true; 
+            return await Swt.updateOne({ startupID }, { strength, weakness, bullseye, threats }) !== null;
         } 
         catch (error) {
             throw new Error('Erro ao atualizar SWOT: ' + error.message);
@@ -24,7 +23,7 @@ class SwtRepository {
     async findSwt(startupID) {
         try {
 
-           const swt = await Swt.findOne({startupID});
+            const swt = await Swt.findOne({startupID}).select('startupID strength weakness bullseye threats').lean();
             return swt; 
         } 
         catch (error) {

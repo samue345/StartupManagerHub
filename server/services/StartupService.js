@@ -18,7 +18,7 @@ class StartupService{
         const result = await bcrypt.compare(password, retorno.startup.senha);
         
         if(result === false)
-          return res.status(400).json({status: 400})
+          return false;
     
         const accessToken = jwt.sign({ _id: retorno.startup._id }, process.env.JWT_SECRET_KEY, { expiresIn: '15m' })
         const refreshToken = jwt.sign({ _id: retorno.startup._id }, process.env.JWT_REFRESH, { expiresIn: '30d' })

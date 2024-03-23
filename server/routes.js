@@ -99,15 +99,16 @@ authRouter.post('/swt/create', async (req, res) => {
 
 });
 
-authRouter.get('/swt/find', async (req, res) => {
+authRouter.get('/swt/find/:startupID', async (req, res) => {
+
   const swtService = SwtFactory.generateInstanceSwtFind();
-  const swt = await swtService.findSwt(req.body);
-  /*
+  const swt = await swtService.findSwt(req.params.startupID);
+
   return res.status(200).json({
     swt,
     newAccessToken: req.newAccessToken
   });
-  */
+
 
 });
 
