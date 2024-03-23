@@ -1,6 +1,8 @@
 const express = require('express');
 const {verifyToken}  = require('./middleware/VerifyToken');
-const startupsFactory = require('./factories/StartupsFactory')
+const startupsFactory = require('./factories/StartupsFactory');
+const SwtFactory = require('./factories/SwtFactory')
+
 const router = express.Router();
 const guestRouter = express.Router();
 const authRouter = express.Router();
@@ -91,22 +93,24 @@ guestRouter.post('/startup/register', async (req, res) => {
 
 
 authRouter.post('/swt/create', async (req, res) => {
- 
-  /*
-  const data = {
-    startupID: req.body.startupID,
-    refreshToken: req.body.refreshToken,
-  };
-
-
-  const startupService = startupsFactory.generateInstancelogout();
-  await startupService.logout(data);
-  */
+  const swtService = SwtFactory.generateInstanceSwt();
+  await swtService.createSwt(req.body);
   res.status(200).json({ message: "successful" });
 
+});
 
+authRouter.get('/swt/find', async (req, res) => {
+  const swtService = SwtFactory.generateInstanceSwtFind();
+  const swt = await swtService.findSwt(req.body);
+  /*
+  return res.status(200).json({
+    swt,
+    newAccessToken: req.newAccessToken
+  });
+  */
 
 });
+
 router.use('/a', authRouter);
 router.use('/g', guestRouter);
 

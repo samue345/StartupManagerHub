@@ -1,20 +1,24 @@
 <script setup>
   import Aside from '../components/Aside.vue'
+  import { useCounterStore } from '/src/store/index.js'
   import { ref, onMounted } from 'vue';
   import axios from '../axios';
 
-  const swt = {strengh: '', weakness: '', bullseye: '', threats: ''}
-
+  const conter = useCounterStore();
+  const swt = { strength: '', weakness: '', bullseye: '', threats: '' }
   
   const createSwtEditor = () => {
+     console.log(conter.user_logado._id);
+     swt.startupID = conter.user_logado._id;
      console.log(swt);
-     axios.post('/a/swt/create', swt).catch(err =>{console.error(err)});
-    
+     axios.post('/a/swt/create', swt).catch(err => { console.error(err) });
   };
+  
   onMounted(() => {
-   });
-
+    console.log("ID do usuário logado:", conter.user_logado._id);
+  });
 </script>
+
 <template>
   <div class="flex">
       <Aside></Aside>
