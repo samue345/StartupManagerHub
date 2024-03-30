@@ -2,6 +2,9 @@ const express = require('express');
 const {verifyToken}  = require('./middleware/VerifyToken');
 const startupsFactory = require('./factories/StartupsFactory');
 const SwtFactory = require('./factories/SwtFactory')
+const canvasFactory = require('./factories/CanvasFactory')
+const PerguntasFactory = require('./factories/PerguntasFactory')
+
 
 const router = express.Router();
 const guestRouter = express.Router();
@@ -12,7 +15,7 @@ guestRouter.post('/startup/delete', startupsFactory.delete);
 
 authRouter.post('/startup/token', async (req, res) => {
 
-    const startupService = startupsFactory.generateInstanceToken();
+    const startupService = startupsFactory.generateInstanceStartup();
     const startup = await startupService.token(req.body.startupID);
 
     res.status(200).json(
@@ -32,7 +35,7 @@ authRouter.post('/startup/logout', async (req, res) => {
     };
 
 
-    const startupService = startupsFactory.generateInstancelogout();
+    const startupService = startupsFactory.generateInstanceStartup();
     await startupService.logout(data);
     res.status(200).json({ message: "Logout successful" });
 
@@ -43,7 +46,7 @@ authRouter.post('/startup/logout', async (req, res) => {
 
 guestRouter.post('/startup/login', async (req, res) => {
  
-      const startupService = startupsFactory.login()
+      const startupService = startupsFactory.generateInstanceStartup()
       const result = await startupService.verificaStartupExiste(req.body.email, req.body.password);
       if(!result){
 
@@ -72,7 +75,7 @@ guestRouter.post('/startup/register', async (req, res) => {
       senha: req.body.password,  
     };
 
-    const startupService = startupsFactory.generateInstanceRegister()
+    const startupService = startupsFactory.generateInstanceStartup()
     const result = await startupService.register(new_startup);
   
     if(!result)
@@ -101,11 +104,53 @@ authRouter.post('/swt/create', async (req, res) => {
 
 authRouter.get('/swt/find/:startupID', async (req, res) => {
 
-  const swtService = SwtFactory.generateInstanceSwtFind();
+  const swtService = SwtFactory.generateInstanceSwt();
   const swt = await swtService.findSwt(req.params.startupID);
 
   return res.status(200).json({
     swt,
+    newAccessToken: req.newAccessToken
+  });
+
+
+});
+
+
+authRouter.post('/canvas/create', async (req, res) => {
+  const canvasService = canvasFactory.generateInstanceCanvas();
+  await canvasService.createCanvas(req.body);
+  res.status(200).json({ message: "successful" });
+
+});
+
+authRouter.get('/canvas/find/:startupID', async (req, res) => {
+
+  const canvasService = canvasFactory.generateInstanceCanvas();
+  const canvas = await canvasService.findCanvas(req.params.startupID);
+
+  return res.status(200).json({
+    canvas,
+    newAccessToken: req.newAccessToken
+  });
+
+
+});
+
+authRouter.post('/pergunta/create', async (req, res) => {
+
+  const perguntasService = PerguntasFactory.generateInstancePerguntas();
+  await perguntasService.createPerguntas(req.body);
+  res.status(200).json({ message: "successful" });
+
+});
+
+authRouter.get('/pergunta/find/:startupID', async (req, res) => {
+
+  const perguntasService = PerguntasFactory.generateInstancePerguntas();
+  const perguntas = await perguntasService.findPerguntas(req.params.startupID);
+
+  return res.status(200).json({
+    perguntas,
     newAccessToken: req.newAccessToken
   });
 

@@ -79,6 +79,16 @@ button:focus-visible {
 
 }
 
+.button_save_data, .button_save_perguntas{
+  color: white;
+  width: 100%;
+  background-color: #535bf2;
+}
+.button_save_data:hover, .button_save_perguntas{
+  color: black;
+  background-color: #fff
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -99,6 +109,9 @@ button:focus-visible {
   .conteudo_principal{
     margin: 40px 0 30px 35px;
   }
+  .button_save_data{
+    margin-top: 10px;
+ }
 
 
 }

@@ -1,4 +1,5 @@
 <script setup>
+  import Aside from '../components/Aside.vue'
   import { useCounterStore } from '/src/store/index.js'
   import { onMounted, watchEffect, ref, reactive} from 'vue';
   import axios from '../axios';
@@ -98,15 +99,7 @@
    border: 1px solid gray;
 }
 
-.button_save_data{
-  color: white;
-  width: 100%;
-  background-color: #535bf2;
-}
-.button_save_data:hover{
-  color: black;
-  background-color: #fff
-}
+
 #caixa_fraquezas, #caixa_ameacas{
   padding: 2px 0 1px 10px;
   margin-bottom: 4px;
@@ -166,9 +159,7 @@
    }
    #aside_vertical{display: none;}   
    
-   .button_save_data{
-      margin-top: 10px;
-   }
+ 
 
 }
 </style>

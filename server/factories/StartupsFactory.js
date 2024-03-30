@@ -2,40 +2,20 @@ const Token = require('../models/Token');
 const StartupRepo = require('../repositories/startup-repositories')
 const StartupService = require('../services/StartupService')
 
-const StartupController = []
+const StartupFactory = []
 
-StartupController.generateInstanceToken = () =>
+StartupFactory.generateInstanceStartup = () =>
 {
     const startupRepo = new StartupRepo();
     const startupService = new StartupService(startupRepo)
     return startupService;
 }
 
-StartupController.generateInstanceRegister = () => {
-
-    const startupRepo = new StartupRepo();
-    const startupService = new StartupService(startupRepo)
-    return startupService;
-}
 
 
-StartupController.login = () => {
- 
-    const startupRepo = new StartupRepo();
-    const startupService = new StartupService(startupRepo)
-    return startupService;
-             
-}
 
-StartupController.generateInstancelogout = () => 
-{
-    const startupRepo = new StartupRepo();
-    const startupService = new StartupService(startupRepo)
-    return startupService; 
- 
-}
 
-StartupController.delete = async (req, res) => 
+StartupFactory.delete = async (req, res) => 
 {
   
   try 
@@ -58,4 +38,4 @@ StartupController.delete = async (req, res) =>
 }
 
 
-module.exports = StartupController;
+module.exports = StartupFactory;
