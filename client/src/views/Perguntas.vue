@@ -119,10 +119,20 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-left: 20px;
+    margin-top: 20px;
     padding: 10px;
+}
+
+#grid_p article{
+   max-width: 20vw;
 }
 .pagrafo_4ps{
     margin: 10px 0 20px 0;
+    padding: 10px;
+    white-space: normal; 
+    display: block;
+    word-wrap: break-word; /* Adicionado para quebrar palavras longas */
+    word-break: break-all; /* Adicionado para quebrar palavras longas */
 }
 .caixa_marketing{
     display: flex;
