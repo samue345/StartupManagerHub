@@ -2,8 +2,8 @@ var bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 
-class StartupService{
-
+class StartupService
+{
     constructor(startupRepository){
         this.startupRepository = startupRepository
     }
@@ -17,8 +17,9 @@ class StartupService{
  
         const result = await bcrypt.compare(password, retorno.startup.senha);
         
-        if(result === false)
+        if(result === false){
           return false;
+        }
     
         const accessToken = jwt.sign({ _id: retorno.startup._id }, process.env.JWT_SECRET_KEY, { expiresIn: '15m' })
         const refreshToken = jwt.sign({ _id: retorno.startup._id }, process.env.JWT_REFRESH, { expiresIn: '30d' })
@@ -27,8 +28,7 @@ class StartupService{
         retorno.accessToken= accessToken
         retorno.refreshToken = refreshToken
         return retorno;
-          
- 
+        
     }
    
     async register(data){

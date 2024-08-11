@@ -1,8 +1,9 @@
-class PerguntasService{
-
+class PerguntasService
+{
     constructor(perguntasRepository){
         this.perguntasRepository = perguntasRepository
     }
+
     async findPerguntas(id){
      
         try{
@@ -14,6 +15,7 @@ class PerguntasService{
         }
           
     }
+    
     async createPerguntas(data){
      
         try{

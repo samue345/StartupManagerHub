@@ -14,17 +14,14 @@ class CanvasService{
           
     }
     async createCanvas(data){
-     
         try{
 
             const canvas = await this.canvasRepository.findCanvas(data.startupID);
             canvas ? await this.canvasRepository.updateCanvas(data) : await this.canvasRepository.createCanvas(data);    
-              
         }
         catch(err){
             console.error(err)
         }
-          
     }
 
 }
